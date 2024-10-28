@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import iconPlaying from '../../../public/icon-playing.gif'
 import moment from 'moment'
 import 'moment/dist/locale/vi'
 import { Fragment, useContext, useMemo, useState } from 'react'
@@ -19,7 +18,6 @@ import usePlayMusic from '~/hooks/usePlayMusic'
 import useCopyLink from '~/hooks/useCopyLink'
 import { getIdPlaylistFromLS, setPlaylistToLS } from '~/utils/song'
 interface Props {
-  playlistId: string
   dataPlaylist: ItemSections[]
   dataItem: ItemSections
   className?: string
@@ -37,7 +35,6 @@ interface Props {
 
 export default function CardItem({
   dataPlaylist,
-  playlistId,
   dataItem,
   number,
   className = 'col-span-1 h-20 hover:bg-[#2f2739] group rounded-lg p-[10px] flex gap-[10px] items-center',
@@ -243,7 +240,7 @@ export default function CardItem({
                             visible: active || stateIdSong === dataItem.encodeId,
                             'invisible group-hover:visible': !(active || stateIdSong === dataItem.encodeId)
                           })}
-                          src={iconPlaying}
+                          src={'/icon-playing.gif'}
                           alt='icon playing'
                         />
                       ) : (

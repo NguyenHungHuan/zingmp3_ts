@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useQuery } from 'react-query'
 import { NavLink, useParams } from 'react-router-dom'
-import zingmp3Api, { nationalKey } from '~/apis/zingmp3Api'
+import zingmp3Api from '~/apis/zingmp3Api'
 import CardItem from '~/components/CardItem'
 import PATH from '~/constants/path'
 import Skeleton from 'react-loading-skeleton'
@@ -12,12 +12,23 @@ import { Helmet } from 'react-helmet-async'
 
 const ZingWeek = () => {
   const { type } = useParams()
+  const [id, setId] = useState<string>('IWZ9Z08I')
+  useEffect(() => {
+    if (type === 'vn') {
+      setId('IWZ9Z08I')
+    } else if (type === 'us') {
+      setId('IWZ9Z0BW')
+    } else if (type === 'kr') {
+      setId('IWZ9Z0BO')
+    }
+  }, [type])
+
   const { handleHookPlayMusic } = usePlayMusic()
   const { data: dataWeek } = useQuery({
-    queryKey: ['zingWeek', type],
+    queryKey: ['zingWeek', id],
     queryFn: () =>
       zingmp3Api.getWeekChart({
-        nationalKey: (type as nationalKey) || 'vn'
+        id: id || 'IWZ9Z08I'
       }),
     staleTime: 3 * 60 * 1000
   })
@@ -32,10 +43,10 @@ const ZingWeek = () => {
   }, [dataWeek])
 
   const { data } = useQuery({
-    queryKey: ['zingWeek', type, currentWeek],
+    queryKey: ['zingWeek', id, currentWeek],
     queryFn: () =>
       zingmp3Api.getWeekChart({
-        nationalKey: (type as nationalKey) || 'vn',
+        id: id || 'IWZ9Z08I',
         week: currentWeek,
         year: currentYear
       }),
@@ -169,7 +180,6 @@ const ZingWeek = () => {
                 hideLike={false}
                 hideAlbum={false}
                 dataPlaylist={dataWeekChart.items}
-                playlistId={''}
               />
             ))
           ) : (

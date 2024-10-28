@@ -12,7 +12,7 @@ export default function NewReleased() {
 
   const { data } = useQuery({
     queryKey: ['NewReleaseSongs'],
-    queryFn: zingmp3Api.getNewReleaseSongs,
+    queryFn: zingmp3Api.getNewReleaseChart,
     staleTime: 3 * 60 * 1000
   })
   const dataNewRealeaseSongs = data?.data.data
@@ -89,7 +89,6 @@ export default function NewReleased() {
                 hideLike={false}
                 hideAlbum={false}
                 dataPlaylist={dataNewRealeaseSongs.items}
-                playlistId={''}
               />
             ))}
           </>

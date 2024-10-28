@@ -5,13 +5,12 @@ import PATH from '~/constants/path'
 import { artist } from '~/types/artist'
 import { InfoSong, audioSong, lyric } from '~/types/infoSong'
 import { dataHub } from '~/types/hub'
-import { dataNewReleaseSong } from '~/types/newReleaseSong'
+import { dataNewReleaseChart } from '~/types/newReleaseChart'
 import { DataChart, itemWeekChart } from '~/types/chart'
 import { album } from '~/types/album'
 import { recommend, searchResult, searchResultType, suggestion } from '~/types/search'
 
 const url = '/'
-export type nationalKey = 'vn' | 'kr' | 'us'
 const zingmp3Api = {
   getSong(params: { id: string }) {
     const url = '/song'
@@ -47,28 +46,23 @@ const zingmp3Api = {
     return axiosClients.get<successResponse<DataPlaylist<ItemSections[]>[]>>(url)
   },
 
-  getGenres() {
-    const url = '/genres'
+  getHub() {
+    const url = '/hub'
     return axiosClients.get<successResponse<dataHub>>(url)
   },
 
-  getNewReleaseSongs() {
-    const url = '/newreleasesongs'
-    return axiosClients.get<successResponse<dataNewReleaseSong>>(url)
+  getNewReleaseChart() {
+    const url = '/newReleaseChart'
+    return axiosClients.get<successResponse<dataNewReleaseChart>>(url)
   },
 
   getChartHome() {
     const url = '/chartHome'
     return axiosClients.get<successResponse<DataChart>>(url)
   },
-  getWeekChart(params: { nationalKey: nationalKey; week?: number; year?: number }) {
+  getWeekChart(params: { id: string; week?: number; year?: number }) {
     const url = '/getWeekChart'
     return axiosClients.get<successResponse<itemWeekChart>>(url, { params })
-  },
-
-  getNewReleaseChart() {
-    const url = '/newReleaseChart'
-    return axiosClients.get(url)
   },
 
   getListSongArtist() {
@@ -95,19 +89,6 @@ const zingmp3Api = {
   searchType(params: { q: string; type: 'song' | 'artist' | 'playlist'; page?: number }) {
     const url = '/searchType'
     return axiosClients.get<successResponse<searchResultType>>(url, { params })
-  },
-
-  getListMV() {
-    return axiosClients.get(url)
-  },
-
-  getCategoryMV() {
-    return axiosClients.get(url)
-  },
-
-  getVideoMV(params: { id: string }) {
-    const url = '/video'
-    return axiosClients.get(url, { params })
   }
 }
 

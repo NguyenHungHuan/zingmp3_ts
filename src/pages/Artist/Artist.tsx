@@ -154,7 +154,6 @@ const Artist = () => {
                                     hideLike={false}
                                     hideAlbum={true}
                                     dataPlaylist={item.items.slice(0, 6)}
-                                    playlistId={''}
                                   />
                                 ))}
                               </div>
@@ -424,7 +423,6 @@ const Artist = () => {
                               hideLike={false}
                               hideAlbum={true}
                               dataPlaylist={item.items}
-                              playlistId={''}
                             />
                           ))}
                         </div>

@@ -91,7 +91,6 @@ const Playlist = () => {
                   isDate={false}
                   hideLike={false}
                   dataPlaylist={dataAlbum.song.items}
-                  playlistId={dataAlbum.encodeId}
                 />
               ))}
               <p className='mt-3 flex items-center gap-2 pl-2 text-[13px] font-semibold text-[#ffffff80]'>
@@ -180,7 +179,6 @@ const Playlist = () => {
                   hideLike={false}
                   hideAlbum
                   dataPlaylist={dataAlbum.song.items}
-                  playlistId={dataAlbum.encodeId}
                 />
               ))}
               <h3 className='mb-2 mt-5 text-[14px] font-bold text-white'>Thông tin</h3>
@@ -210,7 +208,6 @@ const Playlist = () => {
                       isDate={false}
                       hideLike={false}
                       dataPlaylist={dataAlbum.sections[0].items}
-                      playlistId={dataAlbum.encodeId}
                     />
                   ))}
                 </div>

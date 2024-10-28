@@ -1,6 +1,6 @@
 import { ItemSections } from './home'
 
-export type dataNewReleaseSong = {
+export type dataNewReleaseChart = {
   banner: string
   items: ItemSections[]
   link: string

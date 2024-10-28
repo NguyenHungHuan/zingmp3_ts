@@ -141,7 +141,6 @@ export default function Home() {
                     className='group col-span-1 flex h-20 items-center gap-[10px] rounded p-[10px] hover:bg-[#2f2739]'
                     dataPlaylist={genre}
                     dataItem={item}
-                    playlistId={item.encodeId}
                     isDate={true}
                     hideAlbum
                     hideTime={true}

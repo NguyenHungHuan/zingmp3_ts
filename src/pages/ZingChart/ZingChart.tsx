@@ -75,7 +75,6 @@ export default function ZingChart() {
                 number={index + 1}
                 hideLike={false}
                 dataPlaylist={dataChartHome.RTChart.items.slice(range[0], range[1])}
-                playlistId={''}
               />
             ))
         ) : (
@@ -169,7 +168,6 @@ export default function ZingChart() {
                         hideAlbum
                         textWide={false}
                         dataPlaylist={dataChartHome.weekChart.vn.items.slice(0, 5)}
-                        playlistId={''}
                       />
                     ))}
                 <div className='mt-[15px] flex w-full items-center justify-center'>
@@ -236,7 +234,6 @@ export default function ZingChart() {
                         hideAlbum
                         textWide={false}
                         dataPlaylist={dataChartHome.weekChart.us.items.slice(0, 5)}
-                        playlistId={''}
                       />
                     ))}
                 <div className='mt-[15px] flex w-full items-center justify-center'>
@@ -303,7 +300,6 @@ export default function ZingChart() {
                         hideAlbum
                         textWide={false}
                         dataPlaylist={dataChartHome.weekChart.korea.items.slice(0, 5)}
-                        playlistId={''}
                       />
                     ))}
                 <div className='mt-[15px] flex w-full items-center justify-center'>

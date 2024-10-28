@@ -13,7 +13,7 @@ import { Helmet } from 'react-helmet-async'
 export default function Hub() {
   const { data } = useQuery({
     queryKey: ['hub'],
-    queryFn: () => zingmp3Api.getGenres(),
+    queryFn: () => zingmp3Api.getHub(),
     staleTime: 3 * 60 * 1000
   })
   const dataHub = data?.data.data

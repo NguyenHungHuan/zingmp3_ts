@@ -5,7 +5,6 @@ import { useContext, useEffect, useMemo, useState } from 'react'
 import Tooltip from '../Tooltip'
 import PATH from '~/constants/path'
 import useGenerateLink from '~/hooks/useGenerateLink'
-import iconPlaying from '../../../public/icon-playing.gif'
 import { AppContext } from '~/contexts/app.context'
 import { useQuery } from 'react-query'
 import zingmp3Api from '~/apis/zingmp3Api'
@@ -202,7 +201,7 @@ export default function BoxItem({
               {isAlbum ? (
                 <>
                   {statePlaySong && getIdPlaylistFromLS() === id ? (
-                    <img className='h-[16px] w-[16px]' src={iconPlaying} alt='icon playing' />
+                    <img className='h-[16px] w-[16px]' src={'/icon-playing.gif'} alt='icon playing' />
                   ) : (
                     <svg
                       fill={'white'}
@@ -230,7 +229,7 @@ export default function BoxItem({
                         visible: effectActive,
                         'invisible group-hover:visible': !effectActive
                       })}
-                      src={iconPlaying}
+                      src={'/icon-playing.gif'}
                       alt='icon playing'
                     />
                   ) : (
@@ -264,7 +263,7 @@ export default function BoxItem({
               className='flex h-[45px] w-[45px] items-center justify-center rounded-full border border-white hover:opacity-90'
             >
               {statePlaySong && getIdPlaylistFromLS() === id ? (
-                <img className='h-[16px] w-[16px]' src={iconPlaying} alt='icon playing' />
+                <img className='h-[16px] w-[16px]' src={'/icon-playing.gif'} alt='icon playing' />
               ) : (
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

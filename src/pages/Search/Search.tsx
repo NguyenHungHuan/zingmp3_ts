@@ -10,7 +10,7 @@ import PATH from '~/constants/path'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-type Type = 'song' | 'artist' | 'artist'
+type Type = 'song' | 'artist' | 'playlist'
 type queryConfig = {
   q: string
   type?: Type
@@ -43,12 +43,12 @@ const Search = () => {
   const scrollableElement = document.getElementsByClassName('main')[0]
 
   useEffect(() => {
-    if (dataType && dataType.pages.map((data) => data.data.data.items).includes(undefined as any)) {
+    if (dataType && type !== 'all' && dataType.pages.map((data) => data.data.data.items).includes(undefined as any)) {
       setIsFetchData(false)
     } else {
       setIsFetchData(true)
     }
-  }, [dataType])
+  }, [dataType, type])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,11 +56,11 @@ const Search = () => {
         fetchNextPage()
       }
     }
-    isFetchData && scrollableElement && scrollableElement.addEventListener('scroll', handleScroll)
+    isFetchData && type !== 'all' && scrollableElement && scrollableElement.addEventListener('scroll', handleScroll)
     return () => {
       scrollableElement && scrollableElement.removeEventListener('scroll', handleScroll)
     }
-  }, [scrollableElement, fetchNextPage, isFetchData])
+  }, [scrollableElement, fetchNextPage, isFetchData, type])
 
   return (
     <main>
@@ -158,7 +158,6 @@ const Search = () => {
                       hideTime={true}
                       stringType='Bài hát'
                       dataPlaylist={dataResult.songs}
-                      playlistId={''}
                     />
                   )}
                   {dataResult.artists && dataResult.artists[0] && (
@@ -186,7 +185,6 @@ const Search = () => {
                       hideTime={true}
                       stringType='Playlist'
                       dataPlaylist={dataResult.playlists}
-                      playlistId={dataResult.playlists[0].encodeId}
                     />
                   )}
                 </div>
@@ -263,7 +261,6 @@ const Search = () => {
                       hideLike={false}
                       hideAlbum={true}
                       dataPlaylist={dataResult.songs.slice(0, 6)}
-                      playlistId={''}
                     />
                   ))}
                 </div>
@@ -404,7 +401,6 @@ const Search = () => {
                           isDate={false}
                           hideLike={false}
                           dataPlaylist={itemMap}
-                          playlistId={''}
                         />
                       ))
                     )}

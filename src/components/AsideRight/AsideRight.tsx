@@ -135,7 +135,6 @@ export default function AsideRight() {
                     classNameFigure='relative cursor-pointer w-[40px] h-[40px] object-cover rounded overflow-hidden flex-shrink-0'
                     customBgActive='bg-[#9b4de0]'
                     dataPlaylist={statePlaylist}
-                    playlistId={''}
                   />
                 </div>
               ))}
@@ -217,7 +216,6 @@ export default function AsideRight() {
                     classNameFigure='relative cursor-pointer w-[40px] h-[40px] object-cover rounded overflow-hidden flex-shrink-0'
                     customBgActive='bg-[#9b4de0]'
                     dataPlaylist={stateHistory}
-                    playlistId={''}
                   />
                 </div>
               ))}
